@@ -1,0 +1,37 @@
+{
+    "jira": {
+        "url": "https://your-company.atlassian.net",
+        "username": "your-email@company.com",
+        "api_token": "your-jira-api-token"
+    },
+    "email": {
+        "smtp_server": "smtp-mail.outlook.com",
+        "smtp_port": 587,
+        "email": "your-email@outlook.com",
+        "password": "your-app-password"
+    },
+    "reports": [
+        {
+            "project_key": "PROJ",
+            "recipients": [
+                "manager@company.com",
+                "team-lead@company.com"
+            ],
+            "days": 30,
+            "enabled": true
+        },
+        {
+            "project_key": "DEV",
+            "recipients": [
+                "dev-manager@company.com"
+            ],
+            "days": 7,
+            "enabled": false
+        }
+    ],
+    "schedule": {
+        "enabled": false,
+        "time": "09:00",
+        "days": ["monday", "wednesday", "friday"]
+    }
+}

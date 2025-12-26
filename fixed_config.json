@@ -1,0 +1,15 @@
+{
+  "jira": {
+    "url": "https://myjira.disney.com",
+    "username": "Nick.zhang.-nd@disney.com",
+    "api_token": "** YOUR API TOKEN HERE **",
+    "auth_type": "bearer",
+    "api_prefix": "/rest/api/2/"
+  },
+  "email": {
+    "smtp_server": "smtp-mail.outlook.com",
+    "smtp_port": 587,
+    "email": "your-email@outlook.com",
+    "password": "your-app-password"
+  }
+}
