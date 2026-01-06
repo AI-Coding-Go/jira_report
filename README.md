@@ -1,6 +1,6 @@
 # Jira报表自动化系统
 
-这是一个完整的Python脚本，用于从Jira获取报表数据并通过Outlook发送邮件。
+这是一个完整的 Python脚本，用于从Jira获取报表数据并生成 MarkDown 文档, 生成目录在 \reports 下面。
 
 ## 功能特性
 
@@ -37,24 +37,6 @@ pip install -r requirements.txt
    }
    ```
 
-### 2. Outlook邮件配置
-
-1. 启用应用专用密码:
-   - 登录Microsoft账户
-   - 安全设置 → 高级安全选项 → 应用密码
-   - 生成新的应用密码
-
-2. 配置SMTP信息:
-   ```json
-   {
-       "email": {
-           "smtp_server": "smtp-mail.outlook.com",
-           "smtp_port": 587,
-           "email": "your-email@outlook.com",
-           "password": "your-app-password"
-       }
-   }
-   ```
 
 ## 使用方法
 
@@ -69,31 +51,18 @@ config = {
         'url': 'https://your-company.atlassian.net',
         'username': 'your-email@company.com',
         'api_token': 'your-api-token'
-    },
-    'email': {
-        'smtp_server': 'smtp-mail.outlook.com',
-        'smtp_port': 587,
-        'email': 'your-email@outlook.com',
-        'password': 'your-app-password'
     }
 }
 
 # 创建自动化实例
 automation = JiraReportAutomation(config)
 
-# 发送报表
-recipients = ['manager@company.com', 'team-lead@company.com']
-success = automation.generate_and_send_report(
-    project_key='PROJ',
-    recipients=recipients,
-    days=30
-)
 ```
 
 ### 命令行运行
 
 ```bash
-python jira_report_automation.py
+python shdr_report.py
 ```
 
 ### 使用配置文件
@@ -182,8 +151,6 @@ email_sender.send_email(
 使用cron或Windows任务计划程序设置定时执行：
 
 ```bash
-# 每周一上午9点执行
-0 9 * * 1 /usr/bin/python3 /path/to/jira_report_automation.py
 ```
 
 ## 故障排除
@@ -195,12 +162,7 @@ email_sender.send_email(
    - 确认用户名格式（邮箱）
    - 验证Jira URL是否正确
 
-2. **邮件发送失败**
-   - 检查应用专用密码设置
-   - 确认SMTP服务器地址和端口
-   - 检查防火墙设置
-
-3. **数据获取异常**
+2**数据获取异常**
    - 验证项目键是否正确
    - 检查JQL查询语法
    - 确认用户权限
@@ -224,7 +186,6 @@ logging.basicConfig(level=logging.DEBUG)
 2. **权限最小化**
    - 使用专用服务账户
    - 仅授予必要的Jira权限
-   - 限制邮件发送范围
 
 ## 扩展开发
 
